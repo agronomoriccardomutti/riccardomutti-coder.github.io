@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riccardo Mutti, Dottore Agronomo | San Salvatore Monferrato</title>
+<meta name="description" content="Dottore Agronomo a San Salvatore Monferrato (AL), attivo nelle province di Alessandria e Pavia: consulenza agronomica, registri biologico, progettazione e gestione lavori del verde, riqualificazione paesaggistica.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: colonna sinistra allineata, titoli grandi a sinistra, servizi come righe a due colonne, calendario agronomico a 12 mesi. */
+:root {
+  --bg: #F2F4EE;
+  --surface: #E6EBDF;
+  --ink: #16221A;
+  --muted: #4A584E;
+  --accent: #2E6A3E;
+  --accent-ink: #FFFFFF;
+  --line: #C8D1C0;
+  --soil: #8A5A2B;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111A14; --surface: #19251D; --ink: #E8EDE4; --muted: #A5B2A7;
+    --accent: #7CC08A; --accent-ink: #0E1A12; --line: #2B3A30; --soil: #D79F63;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111A14; --surface: #19251D; --ink: #E8EDE4; --muted: #A5B2A7;
+  --accent: #7CC08A; --accent-ink: #0E1A12; --line: #2B3A30; --soil: #D79F63;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 18px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+.label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+header.top { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: baseline; padding-block: 20px; border-bottom: 1px solid var(--line); }
+header.top .name { font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+header.top nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 16px; }
+header.top nav a { color: var(--ink); text-decoration: none; }
+header.top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.hero { padding-block: 72px 56px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(38px, 7vw, 68px); font-weight: 700; max-width: 16ch; }
+.hero p.lead { font-size: 21px; max-width: 54ch; color: var(--muted); margin: 0; }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { font-family: var(--font-body); font-weight: 600; font-size: 17px; padding: 12px 20px; border-radius: 4px; border: 2px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; text-decoration: none; display: inline-block; }
+.btn.ghost { background: transparent; color: var(--accent); }
+
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section > .label { margin-bottom: 12px; display: block; }
+section h2 { font-size: clamp(28px, 4.5vw, 40px); margin-bottom: 32px; max-width: 22ch; }
+
+.service { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 8px 40px; padding-block: 28px; border-top: 1px solid var(--line); }
+.service:first-of-type { border-top: 0; padding-top: 0; }
+.service h3 { font-size: 26px; font-weight: 500; }
+.service p { margin: 0 0 10px; }
+.service ul { margin: 0; padding-left: 20px; color: var(--muted); }
+.service li { margin-bottom: 4px; }
+@media (max-width: 680px) { .service { grid-template-columns: minmax(0, 1fr); } }
+
+.cal { background: var(--surface); padding: 24px; border-radius: 6px; }
+.cal-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px 3px; }
+.cal-months span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-align: center; }
+.cal-row-label { grid-column: 1 / -1; font-size: 15px; margin-top: 10px; }
+.bar { height: 14px; border-radius: 2px; background: var(--accent); }
+.bar.soil { background: var(--soil); }
+.bar.soft { background: var(--accent); opacity: 0.45; }
+.cal-note { margin: 20px 0 0; font-size: 15px; color: var(--muted); }
+
+.about { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 48px; }
+@media (max-width: 760px) { .about { grid-template-columns: minmax(0, 1fr); } }
+.about p { margin: 0 0 16px; max-width: 60ch; }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.facts li { padding-bottom: 14px; border-bottom: 1px solid var(--line); font-size: 16px; }
+.facts li b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+
+.contact { display: grid; gap: 24px; }
+.contact-lines { display: grid; gap: 14px; }
+.copyrow { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.copyrow .val { font-family: var(--font-mono); font-size: 19px; user-select: all; overflow-wrap: anywhere; }
+.copybtn { font-family: var(--font-body); font-size: 14px; padding: 4px 12px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 4px; cursor: pointer; }
+.copybtn:hover { border-color: var(--accent); }
+
+footer { padding-block: 32px 40px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="name">Riccardo Mutti · Dottore Agronomo</span>
+    <nav aria-label="Sezioni">
+      <a href="#servizi">Servizi</a>
+      <a href="#periodi">Periodi</a>
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="label">Studio agronomico · San Salvatore Monferrato (AL)</span>
+      <h1>Agronomia di campo e progetto del verde in Monferrato.</h1>
+      <p class="lead">Consulenza alle aziende agricole, gestione dei registri per il biologico, progettazione e direzione dei lavori del verde, riqualificazione del paesaggio. Lavoro con chi coltiva e con chi vuole un giardino che regga nel tempo.</p>
+      <div class="cta">
+        <a class="btn" href="#contatti">Chiedi un sopralluogo</a>
+        <a class="btn ghost" href="#servizi">Vedi i servizi</a>
+      </div>
+      <div class="meta label"><span>Dottore Agronomo dal 2006</span><span>Azienda agricola propria dal 2001</span></div>
+    </div>
+
+    <section id="servizi">
+      <span class="label">Servizi</span>
+      <h2>Quattro ambiti, un solo referente.</h2>
+
+      <div class="service">
+        <h3>Consulenza agronomica</h3>
+        <div>
+          <p>Assistenza tecnica continuativa o a chiamata, per frutteti, noccioleti, vigneti e seminativi.</p>
+          <ul>
+            <li>Scelta di varietà, impianto e piano di coltivazione</li>
+            <li>Potatura, fertilizzazione e difesa fitosanitaria</li>
+            <li>Sopralluoghi in campo con relazione scritta</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service">
+        <h3>Gestione dei registri per il biologico</h3>
+        <div>
+          <p>Registri e documenti in ordine prima del controllo, secondo il Reg. UE 2018/848.</p>
+          <ul>
+            <li>Quaderno di campagna e registri di carico e scarico</li>
+            <li>Piano di produzione e documentazione per l'organismo di certificazione</li>
+            <li>Verifica della coerenza tra trattamenti, acquisti e raccolti</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service">
+        <h3>Progettazione e gestione dei lavori del verde</h3>
+        <div>
+          <p>Dal rilievo al cantiere: progetto, scelta delle specie, coordinamento delle imprese e cura delle opere.</p>
+          <ul>
+            <li>Giardini privati, spazi aziendali, aree condominiali</li>
+            <li>Direzione lavori e piano di manutenzione</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service">
+        <h3>Riqualificazione paesaggistica</h3>
+        <div>
+          <p>Interventi su aree agricole e pertinenze da recuperare, con attenzione al contesto collinare del Monferrato.</p>
+          <ul>
+            <li>Ripristino di siepi, filari, scarpate e margini di campo</li>
+            <li>Inserimento di nuove opere e strutture nel paesaggio</li>
+            <li>Elaborati tecnici per pratiche e autorizzazioni</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="periodi">
+      <span class="label">Calendario</span>
+      <h2>Quando conviene muoversi.</h2>
+      <div class="cal">
+        <div class="cal-grid cal-months" aria-hidden="true">
+          <span>G</span><span>F</span><span>M</span><span>A</span><span>M</span><span>G</span><span>L</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-row-label">Potatura e piano di impianto · novembre–marzo</div>
+          <div class="bar" style="grid-column: 1 / 4"></div>
+          <div class="bar" style="grid-column: 11 / 13"></div>
+
+          <div class="cal-row-label">Difesa e fertilizzazione · marzo–settembre</div>
+          <div class="bar" style="grid-column: 3 / 10"></div>
+
+          <div class="cal-row-label">Registri e quaderno di campagna per il bio · tutto l'anno</div>
+          <div class="bar soft" style="grid-column: 1 / 13"></div>
+
+          <div class="cal-row-label">Progettazione del verde e del paesaggio · ottobre–febbraio</div>
+          <div class="bar soil" style="grid-column: 10 / 13"></div>
+          <div class="bar soil" style="grid-column: 1 / 3"></div>
+
+          <div class="cal-row-label">Lavori del verde · marzo–giugno e settembre–novembre</div>
+          <div class="bar soil" style="grid-column: 3 / 7"></div>
+          <div class="bar soil" style="grid-column: 9 / 12"></div>
+        </div>
+        <p class="cal-note">Periodi indicativi: le date esatte dipendono da specie, quota e andamento stagionale. Meglio sentirsi prima, soprattutto per i progetti.</p>
+      </div>
+    </section>
+
+    <section id="chi-sono">
+      <span class="label">Chi sono</span>
+      <h2>Un agronomo che lavora anche la sua terra.</h2>
+      <div class="about">
+        <div>
+          <p>Sono Riccardo Mutti, Dottore Agronomo dal 2006. Dal 2001 conduco un'azienda agricola di circa 9,5 ettari a pesco, albicocco e nocciolo: so cosa costa una scelta sbagliata in campo, perché la pago anch'io.</p>
+          <p>Accanto all'attività in azienda seguo consulenze agronomiche, pratiche e progetti del verde. Insegno in un istituto tecnico agrario, e mi piace spiegare il perché di ogni intervento, non solo consegnare la relazione.</p>
+        </div>
+        <ul class="facts">
+          <li><b>Albo</b>Ordine dei Dottori Agronomi e dei Dottori Forestali</li>
+          <li><b>Sicurezza</b>Coordinatore per la sicurezza nei cantieri (D.Lgs. 81/08)</li>
+          <li><b>Qualità</b>Lead Auditor ISO 9001:2015</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contatti">
+      <span class="label">Contatti</span>
+      <h2>Raccontami cosa c'è da fare.</h2>
+      <div class="contact">
+        <p style="margin:0; max-width: 56ch;">Per un primo sopralluogo o un preventivo, chiama o scrivimi. Opero nelle province di Alessandria e di Pavia.</p>
+        <div class="contact-lines">
+          <div class="copyrow">
+            <span class="label">Telefono</span>
+            <span class="val" id="tel-val">339 734 8888</span>
+            <button class="copybtn" type="button" data-copy="tel-val" id="btn-tel">Copia</button>
+          </div>
+          <div class="copyrow">
+            <span class="label">Email</span>
+            <span class="val" id="mail-val">riccardo.mutti@gmail.com</span>
+            <button class="copybtn" type="button" data-copy="mail-val" id="btn-mail">Copia</button>
+          </div>
+          <div class="copyrow">
+            <span class="label">Instagram</span>
+            <a class="val" href="https://www.instagram.com/riccardo.mutti.agronomo/" target="_blank" rel="noopener">@riccardo.mutti.agronomo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Riccardo Mutti · Dottore Agronomo · San Salvatore Monferrato (AL)</span>
+    <span>P.IVA 01919750065</span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copybtn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.getAttribute('data-copy'));
+    var text = el.textContent.trim();
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selezionato';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { btn.textContent = 'Copiato'; }, fallback);
+    } catch (e) { fallback(); }
+    setTimeout(function () { btn.textContent = 'Copia'; }, 1800);
+  });
+});
+</script>
+
+</body>
+</html>
